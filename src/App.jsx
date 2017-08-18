@@ -35,7 +35,7 @@ class App extends Component {
       stocks: {},
       news: [],
       open: false,
-      names: ["AAPL", "TSLA", "MSFT"],
+      names: ["AAPL", "TSLA", "MSFT" , "UGAZ" , "SRPT" , "NUGT" , "JD" , "GS" , "INTC","AMD"],
       currentTicker:""
     }
     //this.onSetSidebarOpen = this.onSetSidebarOpen.bind(this);
@@ -44,7 +44,7 @@ class App extends Component {
     this.handleClick = this.handleClick.bind(this);
     this.handleAdd = this.handleAdd.bind(this);
     this.handleOnChange = this.handleOnChange.bind(this);
-    
+
 
   }
 
@@ -132,8 +132,8 @@ class App extends Component {
   }
 
   handleRemove(name) {
-    let updatedScope = this.state.names.filter((item) => { 
-        return item != name 
+    let updatedScope = this.state.names.filter((item) => {
+        return item != name
       })
     this.setState({
       names: updatedScope
@@ -149,7 +149,7 @@ class App extends Component {
   handleOnChange = (event) => {
     this.setState({currentTicker: event.target.value.toUpperCase()});
   }
-  
+
   searchTicker(event) {
     if(event.key === "Enter") {
       fetch(`https://query2.finance.yahoo.com/v7/finance/options/${this.state.currentTicker}`)
@@ -252,11 +252,12 @@ class App extends Component {
     };
     let news = this.state.news.map((item) => {
       return <div><b>{item.title['#text']}</b><br/>{item.description['#text']} <br/><a href={item.link['#text']}>{item.link['#text']}</a><br/><br/></div>
+
     });
 
     let names = this.state.names.map((name) => {
-      return <MenuItem onClick={ 
-        (event) => this.handleClick(name) 
+      return <MenuItem onClick={
+        (event) => this.handleClick(name)
       }>
       {name}
       <IconButton tooltip="SVG Icon" >
@@ -269,13 +270,22 @@ class App extends Component {
         return (
           <MuiThemeProvider>
             <div className = "container">
-              <nav className="navbar">
-                <a href="/" className="navbar-brand">REACT-STOCK</a>
-                <h3 className="navbar-user-count">{this.state.userCount} users online</h3>
+              <nav>
+                <div className="nav-wrapper">
+                  <a href="/" className="navbar-brand">REACT-STOCK</a>
+                <h3 className="navbar-login>"></h3>
+                <label><b>Username</b></label>
+                <input type="text" placeholder="Enter Email" name="uname" required/>
+                <label><b>Password</b></label>
+                <input type="password" placeholder="Enter Password" name="psw" required/>
+
+                <button type="submit">Login</button>
+                <span className="psw">New User?<a href="#">Register</a></span>
+                </div>
               </nav>
               <div>
                 <RaisedButton
-                  label="Toggle Drawer"
+                  label="Watchlist"
                   onClick={this.handleToggle}
                 />
                 <div><br/></div>
@@ -286,7 +296,7 @@ class App extends Component {
                 </Drawer>
               </div>
               <form>
-              <input onKeyPress={this.searchTicker} onChange={this.handleOnChange} value={this.state.currentTicker} type="text" placeholder="Enter a Ticker"/>
+              <input onKeyPress={this.searchTicker} onChange={this.handleOnChange} value={this.state.currentTicker} type="text"  placeholder="Enter a Ticker"/>
               <IconButton tooltip="SVG Icon" >
                   <ContentAdd color={red500} onClick= {this.handleAdd}/>
                 </IconButton>
@@ -295,7 +305,7 @@ class App extends Component {
               <section className="container">
               <style>{`
                  table{
-                  border:1px solid black;
+                  border:1px solid white;
                   }
                   `}</style>
                 <div className="left-half">
