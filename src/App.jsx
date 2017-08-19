@@ -275,6 +275,7 @@ class App extends Component {
                   <a href="/" className="navbar-brand">REACT-STOCK</a>
                 <h3 className="navbar-login>"></h3>
                 <label><b>Username</b></label>
+
                 <input type="text" placeholder="Enter Email" name="uname" required/>
                 <label><b>Password</b></label>
                 <input type="password" placeholder="Enter Password" name="psw" required/>

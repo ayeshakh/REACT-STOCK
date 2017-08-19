@@ -70,7 +70,7 @@ body {
 }
 
 .navbar {
-  background: black;
+  background: white;
   border-bottom: 1px solid black;
   height: 50px;
   left: 0;
@@ -79,6 +79,8 @@ body {
   right: 0;
   top: 0;
 }
+
+
 
 
 .navbar-brand {
@@ -97,13 +99,6 @@ body {
 }
 }
 
-.navbar-user-count {
-  float: right;
-  font-size: 15px;
-  line-height: 50px;
-  padding: 0 10px;
-  text-decoration: none;
-}
 
 html, body, section {
   height: 100%;
@@ -165,6 +160,6 @@ th {
   border:1px solid grey;
 }
 
-a:link {
+a {
     color: red;
 }
